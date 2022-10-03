@@ -1,9 +1,13 @@
 import AddYourName from "./components/AddYourName";
 
 function App() {
+  const handleName = (name) => {
+    console.log(name);
+  };
+
 	return (
 		<div className='App'>
-			<AddYourName />
+			<AddYourName handleName={handleName} />
 		</div>
 	);
 }

@@ -1,11 +1,11 @@
 import { useState } from "react";
 
-const AddYourName = () => {
+const AddYourName = ({handleName}) => {
     const [name, setName] = useState("");
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(name);
+        handleName(name);
     };
 
 	return (
