@@ -1,6 +1,6 @@
 ## TO-DOs
 
-- [ ] Create a React front-end for the app
+- [X] Create a React front-end for the app
 - [ ] Create an Express server for the app
 - [ ] Create a MongoDB atlas database for the app
 - [ ] Dockerize the front-end with Nginx and the backend with a Nodejs container
