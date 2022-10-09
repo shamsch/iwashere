@@ -5,7 +5,7 @@ const AddYourName = ({handleName}) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        handleName(name);
+        handleName({name});
     };
 
 	return (

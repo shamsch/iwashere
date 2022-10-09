@@ -17,11 +17,8 @@ const NAMES = [
 const API = "http://localhost:8080";
 
 function App() {
-	const handleName = (name) => {
-		console.log(name);
-	};
-
 	const [allNames, setAllNames] = useState([]);
+	const [refetch, setRefetch] = useState(false);
 
 	useEffect(() => {
 		fetch(`${API}/api`)
@@ -30,7 +27,19 @@ function App() {
 				//only add the last 5 names
 				setAllNames(data.slice(-5));
 			});
-	}, []);
+	}, [refetch]);
+
+	const handleName = (name) => {
+		fetch(`${API}/api`, {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify(name),
+		}).then(() => {
+			setRefetch(!refetch);
+		});
+	};
 
 	return (
 		<div className='App'>
