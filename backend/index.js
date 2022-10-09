@@ -2,6 +2,9 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const app = express();
+const dotenv = require("dotenv");
+
+dotenv.config();
 
 const DB = process.env.DATABASE || "mongodb://localhost:27017/yourDB";
 const PORT = process.env.PORT || 3000;
@@ -15,6 +18,13 @@ const db = mongoose.connect(DB, {
     console.log(err);
 });
 
+const nameSchema = new mongoose.Schema({
+    name: String,
+});
+
+const Name = mongoose.model("Name", nameSchema);
+
+
 app.use(express.json());
 app.use(cors());
 
@@ -23,24 +33,26 @@ app.get("/", (req, res) => {
 });
 
 app.get("/api", (req, res) => {
-    db.collection("name").find({}).toArray((err, result) => {
+    Name.find({}, (err, names) => {
         if (err) {
             console.log(err);
         } else {
-            res.send(result);
+            res.json(names);
         }
     });
 });
 
 app.post("/api", (req, res) => {
-    const data = req.body;
-    db.collection("name").insertOne(data, (err, result) => {
+    const { name } = req.body;
+    const newName = new Name({ name });
+    newName.save((err) => {
         if (err) {
             console.log(err);
         } else {
-            res.send(result);
+            res.send("Name added!");
         }
-    });
+    }
+    );
 });
 
 app.listen(PORT, () => {
