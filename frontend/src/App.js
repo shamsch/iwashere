@@ -14,7 +14,7 @@ const NAMES = [
 	},
 ];
 
-const API = "http://localhost:8080";
+const API = "http://13.53.126.216:4000";
 
 function App() {
 	const [allNames, setAllNames] = useState([]);
