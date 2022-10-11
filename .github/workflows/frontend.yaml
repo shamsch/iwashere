@@ -1,4 +1,4 @@
-name: Deploy to Amazon ECS
+name: Deploying the Frontend container to AWS ECS
 
 on:
   push:
@@ -10,7 +10,7 @@ env:
   ECR_REPOSITORY: iwashereregistry           
   ECS_SERVICE: iwashereservice                 
   ECS_CLUSTER: iwasherecluster                 
-  ECS_TASK_DEFINITION: iwasheretask:2             
+  ECS_TASK_DEFINITION: .aws/td.json             
   CONTAINER_NAME: iwasherecontainer          
 
 jobs:
