@@ -10,7 +10,7 @@ env:
   ECR_REPOSITORY: iwashereregistry           
   ECS_SERVICE: iwashereservice                 
   ECS_CLUSTER: iwasherecluster                 
-  ECS_TASK_DEFINITION: iwasheretask             
+  ECS_TASK_DEFINITION: iwasheretask:2             
   CONTAINER_NAME: iwasherecontainer          
 
 jobs:
@@ -40,7 +40,7 @@ jobs:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
           IMAGE_TAG: ${{ github.sha }}
         run: |
-          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG backend
+          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG frontend
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
           echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
 

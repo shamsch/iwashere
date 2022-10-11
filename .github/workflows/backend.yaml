@@ -10,7 +10,7 @@ env:
   ECR_REPOSITORY: iwashereregistry           
   ECS_SERVICE: iwashereservice                 
   ECS_CLUSTER: iwasherecluster                 
-  ECS_TASK_DEFINITION: iwasheretask             
+  ECS_TASK_DEFINITION: iwasheretask:2             
   CONTAINER_NAME: iwasherecontainer          
 
 jobs:
