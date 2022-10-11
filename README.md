@@ -1,3 +1,6 @@
+## STATUS
+
+Semi-successful. The CI/CD Pipeline partially worked. Discontinued to not incur AWS costs.
 ## TO-DOs
 
 - [X] Create a React front-end for the app
